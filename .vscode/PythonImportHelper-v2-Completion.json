@@ -1,0 +1,114 @@
+[
+    {
+        "label": "mysql.connector",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "mysql.connector",
+        "description": "mysql.connector",
+        "detail": "mysql.connector",
+        "documentation": {}
+    },
+    {
+        "label": "register",
+        "importPath": "atexit",
+        "description": "atexit",
+        "isExtraImport": true,
+        "detail": "atexit",
+        "documentation": {}
+    },
+    {
+        "label": "messagebox",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "DeepFace",
+        "importPath": "deepface",
+        "description": "deepface",
+        "isExtraImport": true,
+        "detail": "deepface",
+        "documentation": {}
+    },
+    {
+        "label": "ImageTk",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "db",
+        "description": "db",
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "connect",
+        "kind": 2,
+        "importPath": "db",
+        "description": "db",
+        "peekOfCode": "def connect():\n    mydb = mysql.connector.connect(\n    host=\"localhost\",\n    user=\"admin\",\n    password=\"admin\",\n    database=\"video_app_db\"\n    )\n    return mydb\ndef insert_data(username,password):\n    db=connect()",
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "insert_data",
+        "kind": 2,
+        "importPath": "db",
+        "description": "db",
+        "peekOfCode": "def insert_data(username,password):\n    db=connect()\n    mycursor = db.cursor()\n    sql = \"INSERT INTO video_app (username, password) VALUES (%s, %s)\"\n    val = (username, password)\n    mycursor.execute(sql, val)\n    db.commit()\n    print(mycursor.rowcount, \"record inserted.\")\n    if mycursor.rowcount > 0:\n        return True",
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "search_data",
+        "kind": 2,
+        "importPath": "db",
+        "description": "db",
+        "peekOfCode": "def search_data(username,password):\n    mydb=connect()\n    mycursor = mydb.cursor()\n    sql = \"SELECT username, password FROM video_app WHERE username=%s COLLATE utf8mb4_0900_as_cs  AND password = %s COLLATE utf8mb4_0900_as_cs  \"\n    adr = (username,password)\n    mycursor.execute(sql, adr)\n    myresult = mycursor.fetchone()\n    print(myresult)\n    if myresult:\n        return True",
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "validate_data",
+        "kind": 2,
+        "importPath": "db",
+        "description": "db",
+        "peekOfCode": "def validate_data(username):\n    mydb=connect()\n    mycursor = mydb.cursor()\n    sql = \"SELECT username, password FROM video_app WHERE username=%s COLLATE utf8mb4_0900_as_cs\"\n    adr = (username,)\n    mycursor.execute(sql, adr)\n    myresult = mycursor.fetchone()\n    print(myresult)\n    if myresult:\n        return False",
+        "detail": "db",
+        "documentation": {}
+    },
+    {
+        "label": "App",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class App():\n    base=None\n    def __init__(self,base):\n        self.base=base\n        img=PhotoImage(file='logoimg.png')\n        Label(base,image=img,bg='white').place(x=50,y=50)\n        frame=Frame(base,width=350,height=350,bg=\"white\")\n        frame.place(x=480,y=70)\n        heading=Label(frame,text='Sign in',fg='#C70039',bg='white',font=('Microsoft YaHei UI Light',23,'bold'))\n        heading.place(x=100,y=5)",
+        "detail": "main",
+        "documentation": {}
+    }
+]
